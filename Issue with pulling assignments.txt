@@ -1,3 +1,0 @@
-I a not sure if i am doing something wrong but when i try to pull assignments i get the following message
-"fatal: repository 'https://github.com/rug-oop/Assignments/' not found"
-And i can't find it on github either to try and add it through ssh url.
