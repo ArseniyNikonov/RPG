@@ -1,25 +1,53 @@
 package nl.rug.oop.introduction;
 
-public class Door extends Inspectable implements Interactable {
+public class Door implements getThroughDoor{
+	private String description;
 	private Room leadsTo;
+	private Room leadsFrom;
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Room getLeadsTo() {
 		return leadsTo;
 	}
-
 	public void setLeadsTo(Room leadsTo) {
 		this.leadsTo = leadsTo;
 	}
-
-	public Door ( String description ) {
-		super (description) ;
-	 }
-
+	public Room getLeadsFrom() {
+		return leadsFrom;
+	}
+	public void setLeadsFrom(Room leadsFrom) {
+		this.leadsFrom = leadsFrom;
+	}
+	public Door(String description,Room from, Room to ) {
+		this.description = description;
+		this.leadsTo = to;
+		this.leadsFrom = from; 
+	}
+	public Door(String description) {
+		this.description = description;
+	}
 	@Override
-	public void interact() {
-		// TODO Auto-generated method stub
+	public Room getThrough(Room currentRoom) {
+		Room a = this.getLeadsTo();
+		Room b = this.getLeadsFrom();
+		if (currentRoom.equals(a)){
+			b.setPlayer(a.getPlayer());
+			a.setPlayer(null);
+			return b;
+		}else {
+			//change player location
+			a.setPlayer(b.getPlayer());
+			b.setPlayer(null);
+			return a;
+		}
+		//Possible exception
 		
 	}
-	public void goThrough(Door door) {
-		
-	}
+
+	
 }
