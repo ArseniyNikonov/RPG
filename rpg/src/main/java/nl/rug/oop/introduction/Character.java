@@ -1,7 +1,12 @@
 package nl.rug.oop.introduction;
+import java.io.Serializable;
 import java.util.Random;
 
-public class Character {
+public class Character implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3L;
 	private String name;
 	private int health;
 	private int strength;

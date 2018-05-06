@@ -1,8 +1,13 @@
 package nl.rug.oop.introduction;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room implements Inspectable { 
+public class Room implements Inspectable,Serializable { 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private String description;
 	private List<Door> doors = new ArrayList<Door>();
 	private List<NPC> NPCs = new ArrayList<NPC>();
@@ -49,22 +54,7 @@ public class Room implements Inspectable {
 		
 	}
 	
-	//Method for going through the door
-	/*public Room getThroughDoor(Door door) {
-		Room a = door.getLeadsTo();
-		Room b = door.getLeadsFrom();
-		if (this.equals(a)){
-			System.out.println("a equals this");
-			//change player location
-			return b;
-		}else {
-		System.out.println("b equals this");
-			//change player location
-			return a;
-		}
-		//Possible exception
-		
-	}*/
+
 	
 	
 }

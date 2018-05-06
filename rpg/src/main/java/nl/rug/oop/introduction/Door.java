@@ -1,6 +1,12 @@
 package nl.rug.oop.introduction;
 
-public class Door implements getThroughDoor{
+import java.io.Serializable;
+
+public class Door implements getThroughDoor,Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String description;
 	private Room leadsTo;
 	private Room leadsFrom;

@@ -1,17 +1,28 @@
 package nl.rug.oop.introduction;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GenerateMap {
+public class GenerateMap implements Serializable	{
+	
+	private static final long serialVersionUID = 4L;
 	private List<Room> room = new ArrayList<>();
+	public List<Room> getRoom() {
+		return room;
+	}
+
+	public void setRoom(List<Room> room) {
+		this.room = room;
+	}
 	static int numberOfSkeletons = 0;
 	
 	public String getRandomItemFromList(List<String> list) {
 		Random rand = new Random();
 		return list.get(rand.nextInt(list.size()));
 	}
-	
+	//Creating a dungeon
 	public void generateMap(Room startRoom, int depthOfMap, GenerateDescriptions descriptions){
 		int maxDepthOfMap = 5;
 		Random rand = new Random();
@@ -21,8 +32,7 @@ public class GenerateMap {
 		}
 		Room[] newRoom = new Room[n];
 		for (int i=0;i<n;i++) {
-		//Room newRoom = new Room(getRandomItemFromList(descriptions.getRoomDescriptions()));
-			newRoom[i] = new Room(getRandomItemFromList(descriptions.getRoomDescriptions()));
+		    newRoom[i] = new Room(getRandomItemFromList(descriptions.getRoomDescriptions()));
 			switch (rand.nextInt(2)) {
 			case 0:
 				Door door = new Door(getRandomItemFromList(descriptions.getDoorDescriptions()),startRoom,newRoom[i]);
@@ -69,12 +79,19 @@ public class GenerateMap {
 		}
 	}
 	public void printMap() {
-		for (Room allRooms:room) {
-			System.out.println("Description:" + allRooms.getDescription());
-			System.out.println("Doors:" + allRooms.getDoors());
-			System.out.println("NPCs:" + allRooms.getNPCs());
-			System.out.println("IsPlayerHere:" + allRooms.getPlayer());
-		}
+			for (Room allRooms:room) {
+				System.out.println("Description:" + allRooms.getDescription());
+				System.out.println("Doors:" + allRooms.getDoors());
+				System.out.println("NPCs:" + allRooms.getNPCs());
+				if (allRooms.getPlayer()!=null) {
+					System.out.println("IsPlayerHere:" + allRooms.getPlayer());
+				}
+				
+			}
+		
 	}
+
 	
 }
+	
+
